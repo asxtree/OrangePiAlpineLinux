@@ -89,6 +89,7 @@ And create a new partition:
 ```
   fdisk /dev/mmcblk0 
  ``` 
+ ```
 root@ubuntu:/build# fdisk /dev/mmcblk0
 
 Welcome to fdisk (util-linux 2.27.1).
@@ -133,7 +134,7 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 
 Syncing disks.
-
+```
 Now format the partition:
 ```
   mkfs.ext4 /dev/mmcblk0p1 <> confirm with "y" if asked
