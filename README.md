@@ -31,27 +31,28 @@ Edit the boot.cmd file to match your board you be using:
   vi boot.cmd (then press "i" on the keyboard to edit the file)
 ```   
 And modify second line with the bord that you want by deleting the current Device Tree Blob file "sun50i-h5-orangepi-pc2.dtb" and writing one of the availabe options like(prime is important in this case):
-  > sun50i-a64-bananapi-m64.dtb
-  > sun50i-a64-nanopi-a64.dtb
-  > sun50i-a64-olinuxino.dtb
-  > sun50i-a64-orangepi-win.dtb
-  > sun50i-a64-pine64.dtb
-  > sun50i-a64-pine64-plus.dtb
-  > sun50i-a64-pinebook.dtb
-  > sun50i-a64-sopine-baseboard.dtb
-  > sun50i-h5-nanopi-m1-plus2.dtb
-  > sun50i-h5-nanopi-neo2.dtb
-  > sun50i-h5-nanopi-neo-plus2.dtb
-  > sun50i-h5-orangepi-pc2.dtb
-  > sun50i-h5-orangepi-prime.dtb
-  > sun50i-h5-orangepi-zero-plus.dtb
-  > sun50i-h5-orangepi-zero-plus2.dtb
-
-'setenv bootargs earlyprintk /boot/vmlinuz-4.14.15-sunxi64 modules=loop,squashfs,sd-mod,usb-storage modloop=/boot/modloop-sunxi console=${console}
-fatload mmc 0:1 0x43000000 boot/dtb-4.14.15-sunxi64/allwinner/sun50i-h5-orangepi-pc2.dtb <should look like> /sun50i-h5-orangepi-prime.dtb
-fatload mmc 0:1 0x41000000 boot/vmlinuz-4.14.15-sunxi64
-fatload mmc 0:1 0x48000000 boot/initramfs-sunxi-new
-bootz 0x41000000 0x48000000 0x43000000'
+   ```
+   sun50i-a64-bananapi-m64.dtb
+   sun50i-a64-nanopi-a64.dtb
+   sun50i-a64-olinuxino.dtb
+   sun50i-a64-orangepi-win.dtb
+   sun50i-a64-pine64.dtb
+   sun50i-a64-pine64-plus.dtb
+   sun50i-a64-pinebook.dtb
+   sun50i-a64-sopine-baseboard.dtb
+   sun50i-h5-nanopi-m1-plus2.dtb
+   sun50i-h5-nanopi-neo2.dtb
+   sun50i-h5-nanopi-neo-plus2.dtb
+   sun50i-h5-orangepi-pc2.dtb
+   sun50i-h5-orangepi-prime.dtb
+   sun50i-h5-orangepi-zero-plus.dtb
+   sun50i-h5-orangepi-zero-plus2.dtb
+```
+> setenv bootargs earlyprintk /boot/vmlinuz-4.14.15-sunxi64 modules=loop,squashfs,sd-mod,usb-storage modloop=/boot/modloop-sunxi console=${console}
+> fatload mmc 0:1 0x43000000 boot/dtb-4.14.15-sunxi64/allwinner/sun50i-h5-orangepi-pc2.dtb (should look like) /sun50i-h5-orangepi-prime.dtb
+> fatload mmc 0:1 0x41000000 boot/vmlinuz-4.14.15-sunxi64
+> fatload mmc 0:1 0x48000000 boot/initramfs-sunxi-new
+> bootz 0x41000000 0x48000000 0x43000000'
 
 Save by pressing the "ESC" key then write ":wq" and press the "ENTER" key.
 
