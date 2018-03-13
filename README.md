@@ -89,35 +89,50 @@ And create a new partition:
 ```
   fdisk /dev/mmcblk0 
  ``` 
-  `root@ubuntu:/build# fdisk /dev/mmcblk0
+root@ubuntu:/build# fdisk /dev/mmcblk0
 
 Welcome to fdisk (util-linux 2.27.1).
+
 Changes will remain in memory only, until you decide to write them.
+
 Be careful before using the write command.
 
 Device does not contain a recognized partition table.
+
 Created a new DOS disklabel with disk identifier 0xe5cd38f0.
 
 Command (m for help): n   <-----------------------------------------------------------------> type "n" for new partition
 Partition type
+
    p   primary (0 primary, 0 extended, 4 free) 
+   
    e   extended (container for logical partitions)
+   
 Select (default p): p   <-------------------------------------------------------------------> type "p" for primary partition
+
 Partition number (1-4, default 1):   <------------------------------------------------------> press ENTER key
+
 First sector (2048-31116287, default 2048):   <---------------------------------------------> press ENTER key
+
 Last sector, +sectors or +size{K,M,G,T,P} (2048-31116287, default 31116287):  <-------------> press ENTER key
 
 Created a new partition 1 of type 'Linux' and of size 14.9 GiB.
 
 Command (m for help): t   <-----------------------------------------------------------------> type "t"
+
 Selected partition 1
+
 Partition type (type L to list all types): 83
+
 Changed type of partition 'Linux' to 'Linux'.
 
 Command (m for help): w   <-----------------------------------------------------------------> type "w" to write changes
+
 The partition table has been altered.
+
 Calling ioctl() to re-read partition table.
-Syncing disks.`
+
+Syncing disks.
 
 Now format the partition:
 ```
