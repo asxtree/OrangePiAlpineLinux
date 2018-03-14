@@ -79,6 +79,7 @@ Then go back to /build:
 Now insert the SD card into the Linux machine so we would prepare it for the image.
 First list the disks to see if you see the SD card, you should have an entry like "Disk /dev/mmcblk0: 14.9 GiB". Ifyou see it, issue this commands to write zero to it:
 ```
+  fdisk -l #to list the disks and find the sd card, in my case is mmcblk0
   dd if=/dev/zero of=/dev/mmcblk0 bs=1M count=1
 ```  
 Then write the u-boot on it:
