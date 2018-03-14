@@ -9,11 +9,11 @@ And also u-boot tools installed like:
 ```
 # Clone git Repo
 
-Logon your Linux machine and execute the following command to clone this git repo into folder /build:
+Logon your Linux machine and execute the following command to clone this git repo into folder tmp_build:
 ```
   git clone https://github.com/asxtree/OrangePiAlpineLinux tmp_build
 ```
-Go in the /build directory, create the sources directory and extract the alpine_image.tar.gz archive into sources:
+Go in the tmp_build directory, create the sources directory and extract the alpine_image.tar.gz archive into sources:
 ```
   cd tmp_build
   mkdir sources
@@ -70,7 +70,7 @@ In order to be able to boot you have to recreate the boot.scr file from the boot
 ```
   mkimage -C none -A arm -T script -d boot.cmd boot.scr
 ```
-Then go back to /build:
+Then go back to tmp_build:
 ```
   cd tmp_build
 ```
