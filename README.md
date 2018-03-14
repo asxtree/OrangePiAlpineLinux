@@ -11,11 +11,11 @@ And also u-boot tools installed like:
 
 Logon your Linux machine and execute the following command to clone this git repo into folder /build:
 ```
-  git clone https://github.com/asxtree/OrangePiAlpineLinux /build
+  git clone https://github.com/asxtree/OrangePiAlpineLinux tmp_build
 ```
 Go in the /build directory, create the sources directory and extract the alpine_image.tar.gz archive into sources:
 ```
-  cd /build
+  cd tmp_build
   mkdir sources
   cat alpine_image* > alpine_image.tar.gz
   tar -zxvf alpine_image.tar.gz -C sources
@@ -34,7 +34,7 @@ Edit the boot.cmd file to match your board you be using:
 ```
   vi boot.cmd (then press "i" on the keyboard to edit the file)
 ```   
-And modify second line with the bord that you want by deleting the current Device Tree Blob file "sun50i-h5-orangepi-pc2.dtb" and writing one of the availabe options like(prime is important in this case `sun50i-h5-orangepi-prime.dtb`):
+And modify in the boot.cmd file only the second line with the bord that you want by deleting the current Device Tree Blob file "sun50i-h5-orangepi-pc2.dtb" and writing one of the availabe options like(prime is important in this case `sun50i-h5-orangepi-prime.dtb`):
    ```
    sun50i-a64-bananapi-m64.dtb
    sun50i-a64-nanopi-a64.dtb
@@ -72,7 +72,7 @@ In order to be able to boot you have to recreate the boot.scr file from the boot
 ```
 Then go back to /build:
 ```
-  cd /build
+  cd tmp_build
 ```
 # Prepare the bootable SD card and copy the sources
 
@@ -90,7 +90,7 @@ And create a new partition:
   fdisk /dev/mmcblk0 
  ``` 
  ```
-root@ubuntu:/build# fdisk /dev/mmcblk0
+root@ubuntu:tmp_build# fdisk /dev/mmcblk0
 
 Welcome to fdisk (util-linux 2.27.1).
 
@@ -159,4 +159,5 @@ Now you should remove the SD card from the Linux machine and insert it in your b
 
 
 # Further Alpine Linux development
-TBD
+
+A version update will be made asap to address the hwclock error and the partion table.
