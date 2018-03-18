@@ -251,7 +251,7 @@ To do so issue the following commands on the linux machine:
 ```
 Specify where the `root` partition will be `/dev/mmcblk0p2` right after `setenv bootargs root=/dev/mmcblk0p2` like in the next example:
 ```
-setenv bootargs root=/dev/mmcblk0p2 earlyprintk /boot/vmlinuz-4.14.15-sunxi64 modules=loop,squashfs,sd-mod,usb-storage      modloop=/boot/modloop-sunxi console=${console}
+setenv bootargs root=/dev/mmcblk0p2 earlyprintk /boot/vmlinuz-4.14.15-sunxi64 modules=loop,squashfs,sd-mod,usb-storage modloop=/boot/modloop-sunxi console=${console}
 fdt addr 0x50000000
 fdt get value bootargs /chosen bootargs
 setenv kernel_addr_r 0x41000000
