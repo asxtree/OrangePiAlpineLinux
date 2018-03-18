@@ -226,7 +226,7 @@ To make a sys installation or persistent for the Alpine to run from the SD card 
 Install Alpine linux on the second partition, remove the boot folder from the installation on the second partition and point where the boot and root will be in the following commands:
 ```
   mount /dev/mmcblk0p2 /mnt
-  setup-disk -m sys -k vanilla /mnt
+  setup-disk -m sys -k vanilla /mnt     #wait for completion
   mount -o remount,rw /dev/mmcblk0p1
   cd /mnt
   rm -rf boot
@@ -243,7 +243,7 @@ After the board was powered off remove the SD card from the board and put it bac
 
 To do so issue the following commands on the linux machine:
 ```
-  fdisk -l #to see if the two partitions are visible
+  fdisk -l      #to see if the two partitions are visible
   mount /dev/mmcblk0p1 /mnt
   cd /mnt/boot/
   rm -rf boot.scr
