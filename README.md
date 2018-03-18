@@ -13,7 +13,7 @@ Logon your Linux machine and execute the following command to clone this git rep
 ```
   git clone https://github.com/asxtree/OrangePiAlpineLinux tmp_build
 ```
-Go in the `tmp_build` directory, create the `sources` directory and extract the `alpine_image.tar.gz` archive into sources:
+Go in the `tmp_build` directory, create the `sources` directory and extract the `OPiAlpine_image.tar.gz` archive into sources:
 ```
   cd tmp_build
   mkdir sources
