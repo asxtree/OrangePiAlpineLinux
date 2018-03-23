@@ -17,8 +17,8 @@ Go in the `tmp_build` directory, create the `sources` directory and extract the 
 ```
   cd tmp_build
   mkdir sources
-  cat alpine_image* > alpine_image.tar.gz
-  tar -zxvf alpine_image.tar.gz -C sources
+  cat OPiAlpine_image* > OPiAlpine_image.tar.gz
+  tar -zxvf OPiAlpine_image.tar.gz -C sources
 ```
 # Modify boot.cmd to match your board (the sources were made for running on Orange Pi PC2)
 
