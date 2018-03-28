@@ -288,5 +288,5 @@ To get rid of the `hwclock` error and `fsck.ext4` failure on the second partitio
 # Further Alpine Linux development
 
 - [x] A version update will be made asap to address the hwclock error and the partion table.
-- [ ] Compiling branch will be made with information on how to build your Alpine sources
+- [x] Compiling branch will be made with information on how to build your Alpine sources
 - [ ] A prebuild persistent version update will be made
