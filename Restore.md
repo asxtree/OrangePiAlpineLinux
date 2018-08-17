@@ -129,8 +129,10 @@ If everything is there you're done. All keys of your Skywire nodes have been sav
 ### Restore the .skywire folder contents onto a skywire node
 
 Foreword:   To be able to restore back the contents previously backed up from a node you should have the computer connected on the same network as the node you want to restore to, e.g. skyminer router.  
-            The backup folder structure looks like this: backup_dat&timestamp\IP_of_backedup_node\node(discovery, manager, ss)\keys.json(user.json, autoStart.json). So each IP folder from the backup folder contains the contents of the respective node IP .skywire folder which in turn contains the keys.json, user.json (used by the manager to store the password) and autoStart.json. Knowing this when in need, we can restore only the keys file or the whole contents of the .skywire folder.  
-            You can restore each node's .skywire contents using FileZilla only if you have access to all the nodes on the network otherwise if you are behind the forwarded port of the manager node youll need to restore the whole backup folder and from there restor to whatever node the data that you need via putty and command line. First we will show how to restore using FileZilla to any node found on the network.
+
+The backup folder structure looks like this: backup_dat&timestamp\IP_of_backedup_node\node(discovery, manager, ss)\keys.json(user.json, autoStart.json). So each IP folder from the backup folder contains the contents of the respective node IP .skywire folder which in turn contains the keys.json, user.json (used by the manager to store the password) and autoStart.json. Knowing this when in need, we can restore only the keys file or the whole contents of the .skywire folder.  
+
+You can restore each node's .skywire contents using FileZilla only if you have access to all the nodes on the network otherwise if you are behind the forwarded port of the manager node youll need to restore the whole backup folder and from there restor to whatever node the data that you need via putty and command line. First we will show how to restore using FileZilla to any node found on the network.
 
 Open previously program that you used to copy the backed up folders to your local computer, FileZilla.
 
