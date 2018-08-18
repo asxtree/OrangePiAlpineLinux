@@ -187,17 +187,23 @@ For our restore node we will take `node1` with the IP 192.168.0.3
 
 First we need to create a new folder on `node1` where the keys are located then move them in that folder. To do this issue the following command:
 
-```ssh root@192.168.0.3 mkdir -p /usr/local/skywire/go/bin/.old;echo $?```
+```
+ssh root@192.168.0.3 mkdir -p /usr/local/skywire/go/bin/.old;echo $?
+```
 
 This will create remotly the `.old` folder in the `bin` folder and it will also return the exit code or error if something went wrong through the `echo $?` parameter. Exit code `0` is good
 
 And now to move them, type:
 
-```ssh root@192.168.0.3 mv /usr/local/skywire/go/bin/.skywire/* /usr/local/skywire/go/bin/.old/;echo $?```
+```
+ssh root@192.168.0.3 mv /usr/local/skywire/go/bin/.skywire/* /usr/local/skywire/go/bin/.old/;echo $?
+```
 
 Now if you got the whole backup folder in the `/root` of the manager you need to copy the contents of the IP folder from it to the node with the respective IP. For this we will use the `scp` command like in the example below.
 
-```scp -rp ~/backup_dat&timestamp/192.168.0.3/* root@192.168.0.3:/usr/local/skywire/go/bin/.skywire/```
+```
+scp -rp ~/backup_dat&timestamp/192.168.0.3/* root@192.168.0.3:/usr/local/skywire/go/bin/.skywire/
+```
 
 To validate that youve restored the old keys, simply go in the manager web ui and you should see the old key there.
 These steps can be used to recover to any node, just change the IP address of the node.
