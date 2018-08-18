@@ -128,27 +128,29 @@ If everything is there you're done. All keys of your Skywire nodes have been sav
 
 ### Restore the .skywire folder contents onto a skywire node
 
+*This should be used only if you reflashed the image and you want to restore the old keys.*
+
 Foreword:   To be able to restore back the contents previously backed up from a node you should have the computer connected on the same network as the node you want to restore to, e.g. skyminer router.  
 
-The backup folder structure looks like this: backup_dat&timestamp\IP_of_backedup_node\node(discovery, manager, ss)\keys.json(user.json, autoStart.json). So each IP folder from the backup folder contains the contents of the respective node IP .skywire folder which in turn contains the keys.json, user.json (used by the manager to store the password) and autoStart.json. Knowing this when in need, we can restore only the keys file or the whole contents of the .skywire folder.  
+The backup folder structure looks like this: `backup_dat&timestamp\IP_of_backedup_node\node`(`discovery`, `manager`, `ss`)`\keys.json`(`user.json`, `autoStart.json`). So each IP folder from the backup folder contains the contents of the respective node IP .skywire folder which in turn contains the keys.json, user.json (used by the manager to store the password) and autoStart.json. Knowing this when in need, we can restore only the keys file or the whole contents of the .skywire folder.  
 
-You can restore each node's .skywire contents using FileZilla only if you have access to all the nodes on the network otherwise if you are behind the forwarded port of the manager node youll need to restore the whole backup folder and from there restore to whatever node the data that you need via putty and command line. 
+You can restore each node's `.skywire` contents using FileZilla only if you have access to all the nodes on the network otherwise if you are behind the forwarded port of the manager node youll need to restore the whole backup folder and from there restore to whatever node the data that you need via putty and command line. 
 
 First we will show how to restore using FileZilla to any node if yo are connected to the skyminer router network.
 
 Open previously program that you used to copy the backed up folders to your local computer, FileZilla.
 
-In the top bar put in the IP of the node to which you want to restore, username (for the official skyminer is root) and password (for the official skyminer is samos) and press the ENTER key on your keyboard. See the picture below.
+In the top bar put in the IP of the node to which you want to restore, username (for the official image is `root`) and password (for the official image is `samos`) and press the `ENTER` key on your keyboard. See the picture below.
 
 ![Filezilla](https://github.com/asxtree/OrangePiAlpineLinux/blob/master/skywire/Re-FileZillalogin.png)
 
 After you successfuly connected to the node that you need, navigate in the Local pane (left side) to the local folder on your computer where you have stored the backup data and select the node IP folder you want to restore.
 
-Now navigate in the Remote pane (right side) on the node on which you are connected, to the .skywire folder that is located in /usr/local/skywire/go/bin/.skywire/ and simply drag the from the Local pane the folders you need in the Remote pane like in the example picture below.
+Now navigate in the Remote pane (right side) on the node on which you are connected, to the `.skywire` folder that is located in `/usr/local/skywire/go/bin/.skywire/` and simply drag the from the Local pane the folders you need in the Remote pane like in the example picture below.
 
 ![drag](https://github.com/asxtree/OrangePiAlpineLinux/blob/master/skywire/Re-draganddrop.png)
 
-An Error message should appear if in the remote location there are already the same folders. Just select Overwrite and select OK like in the picture below.
+An Error message should appear if in the remote location there are already the same folders. Just select `Overwrite` and select `OK` like in the picture below.
 
 ![overwrite](https://github.com/asxtree/OrangePiAlpineLinux/blob/master/skywire/Re-overwrite.png)
 
@@ -157,19 +159,47 @@ Also if you just restored the data from the manager node you should have the old
 
 ### Restore the .skywire folder contents onto a node through the manager pi
 
+*This should be used only if you reflashed the image and you want to restore the old keys.*
+
 Foreword: This method is used when you have access only to the manager node through the port forwarding done on the skyminer router. So this is done while you are connected to the home router.
 
-Open FileZilla and in the top bar put in the IP of the manager node from your home network, username (for the official skyminer is root) and password (for the official skyminer is samos) and press the ENTER key on your keyboard. See the picture below.
+Open FileZilla and in the top bar put in the IP of the manager node from your home network, username (for the official image is `root`) and password (for the official image is `samos`) and press the `ENTER` key on your keyboard. See the picture below.
 
 ![Filezilla](https://github.com/asxtree/OrangePiAlpineLinux/blob/master/skywire/Re-FileZillalogin.png)
 
-After you successfuly connected on the manager, navigate in the Local pane (left side) to the local folder on your computer where you have stored the backup data and select the whole backup_dat&timestamp folder you want to restore.
+After you successfuly connected on the manager, navigate in the Local pane (left side) to the local folder on your computer where you have stored the backup data and select the whole `backup_dat&timestamp` folder you want to restore.
 
-Now navigate in the Remote pane (right side) on the manager, to the /root folder and simply drag the from the Local pane the backup_dat&timestamp folder in the Remote pane like in the example picture below.
+Now navigate in the Remote pane (right side) on the manager, to the `/root` folder and simply drag the from the Local pane the `backup_dat&timestamp` folder in the Remote pane like in the example picture below.
 
-![recoverbackup]
+![recoverbackup](https://github.com/asxtree/OrangePiAlpineLinux/blob/master/skywire/Re-manager.png)
 
+Now that you recovered the whole backup folder you need to login on the manager node with putty (if you are using Windows) or with the terminal from Mac. To login use as user: `root` and password: `samos`.
 
+After you login type the command `ll` which will list you all the folders that are located in `/root` and locate the `backup_dat&timestamp` folder like in the picture below.
+
+![listroot](https://github.com/asxtree/OrangePiAlpineLinux/blob/master/skywire/Re-list.png)
+
+OBS.: You can also list the contents of the `backup_dat&timestamp` folder by typing `ll backup_dat&timestamp/`, even deeper with `ll backup_dat&timestamp/192.168.0.3/` and you can go like this in all the folders. Use `TAB` key for autocomplete, for example type only `backup` press `TAB` and it will autocomplete the name.
+
+Also you can check the key first to be sure you're putting the right one by using `cat` command, for example `cat backup_dat&timestamp/192.168.0.3/node/keys.json` will show you the contents of that file and you'll be able to check the key.
+
+For our restore node we will take node1 with the IP 192.168.0.3
+
+First we need to create a new folder on node1 where the keys are located then move them in that folder. To do this issue the following command:
+
+`ssh root@192.168.0.3 mkdir -p /usr/local/skywire/go/bin/.old;echo $?`
+
+This will create remotly the `.old` folder in the `bin` folder and it will also return the exit code or error if something went wrong through the `echo $?` parameter. Exit code `0` is good
+
+And now to move them, type:
+
+`ssh root@192.168.0.3 mv /usr/local/skywire/go/bin/.skywire/* /usr/local/skywire/go/bin/.old/;echo $?`
+
+Now if you got the whole backup folder in the `/root` of the manager you need to copy the contents of the IP folder from it to the node with the respective IP. For this we will use the `scp` command like in the example below.
+
+`scp -rp ~/backup_dat&timestamp/192.168.0.3/* root@192.168.0.3:/usr/local/skywire/go/bin/.skywire/`
+
+To validate that youve restored the old keys, simply go in the manager web ui and you should see the old key there.
 
 ***
 
